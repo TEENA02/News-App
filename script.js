@@ -13,6 +13,9 @@ async function fetchNews(query){
     const result=await fetch(`${url}${query}&apiKey=${API_KEY}`);
     const data= await result.json();
     console.log(data);
+     if(!data.articles){
+        console.error("No articles found in response:", data);
+    }
     collectData(data.articles);
 }
 
